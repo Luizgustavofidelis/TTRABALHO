@@ -14,21 +14,19 @@
     require_once("link.php");
     
     
-   function gerar_botao(){
-   echo '<div class="dropdown">';
-   echo '<button class="dropbtn">Times de futebol</button>';
-    echo'<div class="dropText">';
-        echo'<span><img src='.$lista2' width="40" height="40"> MAGOS</span>';
-        echo'<br>';
-        echo'<span><img src="https://i.pinimg.com/originals/f4/23/ca/f423cad8415e2bdfd6de21fce07fd342.png" width="40" height="40">HEROIS</span>';
-        echo'<br>';
-        echo'<span><img src="https://wallpaper.forfun.com/fetch/e8/e8e0477990ca2870d749ccd166679316.jpeg" width="40" height="40">PRIMARIOS</span>';
-        echo'<br>';
-    echo'</div>';
-echo'</div>';
+    function desenhaBotao($titulo, $lista)
+    {
+        echo '<div class="dropdown">';
+            echo '<button class="dropbtn">' . $titulo . '</button>';
+            echo '<div class="dropText">';
 
-    
-   }
+                foreach ($lista as $item) {
+                    echo '<span><img src="' . $item->getLinkImg() . '" width="70" height="70"> ' . $item->getInfo() . '</span><br>';
+                }
+
+            echo '</div>';
+        echo '</div>';
+    }
     
     $lista2 = array();
     $link2 = new Link();
@@ -44,7 +42,7 @@ echo'</div>';
     $link2->setInfo("macaco 10 anos");
     array_push($lista2,$link2);
 
-   foreach($LISTA)
+    desenhaBotao("Macacos", $lista2);
 
     $lista3 = array();
     $link3 = new Link();
@@ -60,7 +58,7 @@ echo'</div>';
     $link3->setInfo("macaco mago");
     array_push($lista3,$link3);
 
-    $lista3 = gerar_botao();
+    desenhaBotao("Macacos", $lista3);
 
     $lista4 = array();
     $link4 = new Link();
@@ -76,7 +74,7 @@ echo'</div>';
     $link4->setInfo("macaconaoegal");
     array_push($lista4,$link4);
 
-    $lista4 = gerar_botao();
+    desenhaBotao("Macacos", $lista4);
     
 
     
